@@ -1,2 +1,26 @@
 server:
   port: 9090
+  shutdown: graceful
+  servlet:
+    context-path: /api
+
+api:
+  version: v0
+
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+
+  datasource:
+    url: jdbc:postgresql://localhost/kalah
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: sa
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false

@@ -13,7 +13,7 @@ To run the app, please follow the below instructions
 	
 Note: 
 
-	* Run the first step only when you are launching the api for first time.
+	* Run the first step only when you are launching the api for first time or when you fetch new changes from remote.
 	* After the first run, you can directly click on run-api.bat
 
 

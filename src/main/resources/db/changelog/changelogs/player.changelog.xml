@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+http://www.liquibase.org/xml/ns/pro
+http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet  author="parthe"  id="2">
+        <createTable tableName="player">
+            <column  name="id"  type="int">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="name"  type="varchar" />
+            <column name="game_id" type="int">
+                <constraints foreignKeyName="player_game_fk" references="game(id)" />
+            </column>
+        </createTable>
+
+        <addAutoIncrement columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          tableName="player"/>
+    </changeSet>
+
+    <changeSet  author="parthe"  id="3">
+        <createTable tableName="pit">
+            <column  name="id"  type="int">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="type"  type="varchar" />
+            <column name="seed_count"  type="int" />
+            <column name="player_id" type="int">
+                <constraints foreignKeyName="pit_player_fk" references="player(id)" />
+            </column>
+        </createTable>
+
+        <addAutoIncrement columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          tableName="pit"/>
+    </changeSet>
+
+</databaseChangeLog>
